@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment-4
+spec:
+  selector:
+    matchLabels:
+      app: test4
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: test4
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - test
+      containers:
+      - name: nginx
+        image: nginx:1.14
+      tolerations:
+      - key: app
+        operator: Equal
+        value: test1
+        effect: NoExecute
