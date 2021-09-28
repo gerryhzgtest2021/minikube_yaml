@@ -14,4 +14,3 @@ spec:
   restartPolicy: Always
   nodeSelector:
     app: test
-status: {}

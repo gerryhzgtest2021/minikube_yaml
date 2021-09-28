@@ -18,4 +18,3 @@ spec:
         cpu: "500m"
   dnsPolicy: ClusterFirst
   restartPolicy: Always
-status: {}
