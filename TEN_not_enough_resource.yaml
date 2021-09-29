@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  #Unique key for the deployment instance
+  name: test-deployment-10
+spec:
+  replicas: 100
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        #the deployment labels selector to this value
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.14
+          resources:
+            requests:
+              memory: "4Gi"
+              cpu: "1000m"
+            limits:
+              memory: "8Gi"
+              cpu: "2000m"
