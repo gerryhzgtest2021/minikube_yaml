@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-17
+  labels:
+    app: app-17
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-17
+  template:
+    metadata:
+      labels:
+        app: app-17
+    spec:
+      containers:
+      - image: nginx:1.14
+        name: app-17
+        ports:
+          - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /api/healthy
+            port: 8080
