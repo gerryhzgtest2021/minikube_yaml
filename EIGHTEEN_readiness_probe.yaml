@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: readiness-18
+spec:
+  containers:
+  - name: readiness-18
+    image: busybox
+    args:
+    - /bin/sh
+    - -c
+    - sleep 500
+    readinessProbe:
+      exec:
+        command:
+        - echo
+        - hello
+      initialDelaySeconds: 5
+      periodSeconds: 5

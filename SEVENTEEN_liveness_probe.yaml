@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: eddie-liveness
+spec:
+  containers:
+  - name: eddie-liveness
+    image: busybox
+    args:
+    - /bin/sh
+    - -c
+    - sleep 500
+    livenessProbe:
+      exec:
+        command:
+        - echo
+        - hello
+      initialDelaySeconds: 5
+      periodSeconds: 5
